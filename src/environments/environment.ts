@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyDKw-aCA0hkDoiXi_EAE4r4-uho6RKdrHA",
+    authDomain: "sms-app-2e429.firebaseapp.com",
+    databaseURL: "https://sms-app-2e429.firebaseio.com",
+    projectId: "sms-app-2e429",
+    storageBucket: "sms-app-2e429.appspot.com",
+    messagingSenderId: "625457327244",
+    appId: "1:625457327244:web:8e8effda97c45fa8211fa9",
+    measurementId: "G-B146WLQX38"
+  }
 };
 
 /*
@@ -14,3 +24,5 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+

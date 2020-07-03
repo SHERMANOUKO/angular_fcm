@@ -1,0 +1,70 @@
+<div class="container" style="padding-bottom: 50px;;">
+    <hr>
+    <h2 class="text text-primary text-center">WELCOME TO THE SME SURVEY</h2>
+    <p class="text text-center"><small>This survey is meant to asses your qualification as an SME</small></p>
+    <hr>
+    <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="sme" id="succesfulPost" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success ! </strong> You qualify as an SME
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div *ngIf="noSME" id="unsuccesfulPost" class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Ooops !</strong> You dont qualify as an sme
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        <div class="form-row">
+            <div class="col">
+                <label class="text text-success">Company Name</label>
+                <input type="text" class="form-control" placeholder="Company name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+            </div>
+        </div>
+        <div class="form-row" style="padding-top: 25px;">
+            <div class="col">
+                <label class="text text-success">Is your company engaged in an economic activity ?</label>
+                <select class="form-control" (click)="income($event.target.value)" formControlName="income" [ngClass]="{ 'is-invalid': submitted && f.income.errors }">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row" *ngIf="no_income">
+            <div class="col">
+                <p style="padding-top: 30px;" class="text text-success">Which of the following is a reason why you have no economic activity ?</p>
+                <label class="text text-primary">Long time to market time</label>
+                <select class="form-control">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                
+                <label class="text text-primary">Long time to market time</label>
+                <select class="form-control">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row" style="padding-top: 25px;">
+            <div class="col">
+                <label class="text text-success">Whats your annual turonover?</label>
+                <input type="text" class="form-control" placeholder="Annual Turnover" formControlName="turnover" [ngClass]="{ 'is-invalid': submitted && f.turnover.errors }">
+            </div>
+        </div>
+        <div class="form-row" style="padding-top: 25px;">
+            <div class="col">
+                <label class="text text-success">Whats your employee size ?</label>
+                <input type="text" class="form-control" placeholder="Employee size" formControlName="employees" [ngClass]="{ 'is-invalid': submitted && f.employees.errors }">
+            </div>
+        </div>
+
+        <div class="btn-toolbar float-right" style="padding-bottom: 100px; padding-top: 50px;" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group" style="">
+                <button type="button" class="btn btn-success btn-sm" (click)="onSubmit()">Submit</button>
+            </div>
+        </div>
+    </form>
+    
+</div>

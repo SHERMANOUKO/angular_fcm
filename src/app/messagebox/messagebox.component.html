@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <hr>
+        <h4 class="text text-center">Individual Message</h4>
+        <hr>
+    </div>
+    <div class="row" *ngFor="let message of individualMessages">
+        <div  class="col-6" *ngIf="message.sender_phone!='40578'">
+            <div class="alert alert-secondary">
+                <span>{{message.message}}</span><br>
+                <small>{{message.created}}</small>
+            </div>
+        </div>
+        <div  class="col-6" *ngIf="message.sender_phone!='40578'"></div>
+        <div  class="col-6" *ngIf="message.sender_phone=='40578'"></div>
+        <div  class="col-6" *ngIf="message.sender_phone=='40578'">
+            <div class="alert alert-primary">
+                <span>{{message.message}}</span><br>
+                <small>{{message.created}}</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <textarea class="form-control" rows="3" (keyup)='0' #text></textarea>
+            </div>
+        </div>
+        <div class="col-12" style="padding-bottom: 40px;">
+            <span style="color:red" *ngIf="text.value.length > 160"><small>160 chars max</small></span>
+            <span style="color:red" *ngIf="!text.value"><small>Required</small></span>
+            <button (click)="sendMessage(phone_number, text.value)" [disabled]="text.value.length > 160 || !text.value" class="btn btn-outline-success btn-sm float-right">Send</button>
+        </div>
+        
+    </div>
+</div>

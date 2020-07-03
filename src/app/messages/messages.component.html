@@ -1,0 +1,66 @@
+<div *ngIf="!showIndividualMessage" class="container">
+    <div class="row">
+        <hr>
+        <h3 class="text text-center">Message Box</h3>
+        <hr>
+    </div>
+    <div class="row" *ngFor="let message of messages">
+        <div class="card col-12">
+            <div class="card-body alert alert-primary" (click)="getIndividualTexts(message.member_phone)">
+                {{message.member_phone}}
+                <p>{{message.message}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showIndividualMessage" class="container">
+    <div class="row">
+        <hr>
+        <h4 class="text text-center">Individual Message</h4>
+        <hr>
+    </div>
+    <div class="row" *ngFor="let message of individualMessages">
+        <div  class="col-6" *ngIf="message.sender_phone=='40578'">
+            <div class="alert alert-primary">
+                <span>{{message.message}}</span><br>
+                <small>{{message.created}}</small>
+            </div>
+        </div>
+        <div  class="col-6" *ngIf="message.sender_phone=='40578'"></div>
+        <div  class="col-6" *ngIf="message.sender_phone!='40578'"></div>
+        <div  class="col-6" *ngIf="message.sender_phone!='40578'">
+            <div class="alert alert-secondary">
+                <span>{{message.message}}</span><br>
+                <small>{{message.created}}</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <textarea class="form-control" rows="3" (keyup)='0' #title></textarea>
+            </div>
+        </div>
+        <div class="col-12" style="padding-bottom: 40px;">
+            <span style="color:red" *ngIf="title.value.length > 160"><small>160 chars max</small></span>
+            <span style="color:red" *ngIf="!title.value"><small>Required</small></span>
+            <button [disabled]="title.value.length > 160 || !title.value" class="btn btn-outline-success btn-sm float-right">Send</button>
+        </div>
+        
+    </div>
+</div>
+
+<!-- {
+    "id": 10,
+    "sender": "antara",
+    "receiver": "xxx-rrr",
+    "sender_phone": "40578",
+    "receiver_phone": "+254708731581",
+    "message": "a trial message",
+    "status": "Success",
+    "at_status": null,
+    "at_delivery": null,
+    "at_msg_id": "ATXid_0470ec78cf6bcfb937f0c8d3901f1d9a",
+    "created": "2020-06-23T09:46:23.975781Z"
+} -->
